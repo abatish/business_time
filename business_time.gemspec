@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{business_time}
-  s.version = "0.3.0.1"
+  s.version = "0.3.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["bokmann"]
@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "business_time.gemspec",
     "lib/business_time.rb",
     "lib/business_time/business_days.rb",
     "lib/business_time/business_hours.rb",
