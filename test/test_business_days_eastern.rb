@@ -53,8 +53,18 @@ class TestBusinessDays < Test::Unit::TestCase
     end
 
     should "take into account a holiday when adding a day" do
-      three_day_weekend = Date.parse("July 5th, 2010")
-      BusinessTime::Config.holidays << three_day_weekend
+      File.open('/tmp/business_time.yml', 'w') do |f|
+        f.write <<-biztime
+business_time:
+  beginning_of_workday: 9:00 am
+  end_of_workday: 5:00 pm
+  holidays:
+    - July 5th, 2010
+        biztime
+      end
+
+      BusinessTime::Config.load("/tmp/business_time.yml")
+
       friday_afternoon = Time.zone.parse("July 2nd, 2010, 4:50 pm")
       tuesday_afternoon = 1.business_day.after(friday_afternoon)
       expected = Time.zone.parse("July 6th, 2010, 4:50 pm")
